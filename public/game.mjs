@@ -4,38 +4,51 @@ import Collectible from './Collectible.mjs';
 
 //const socket = io();
 const canvas = document.getElementById('game-window');
-const context = canvas.getContext('2d');
+let ctx = canvas.getContext('2d');
 
-
-function clear(){
-  context.fillStyle = "black";
-  context.fillRect(0, 0, canvas.width, canvas.height);
-}
-let frame = 0;
-function avatar() {
-  const now = new Date();
-  let sec = now.getSeconds();
-  console.log(`${frame} / ${sec}`);
-  
-  if(frame % 14 === 0){
-    clear();
-    context.fillStyle = "yellow";
-    context.beginPath();
-    context.arc(37, 37, 14, Math.PI / 4 , Math.PI * 7 / 4, false);
-    context.lineTo(32, 37);
-    context.fill();
-  } else if (frame % 7 === 0) {
-    clear();
-    context.fillStyle = "yellow";
-    context.beginPath();
-    context.arc(37, 37, 14, Math.PI / 12 , Math.PI * 23 / 12, false);
-    context.lineTo(33, 37);
-    context.fill();
+//keyboard event
+addEventListener('keydown', (event) =>{
+  console.log(event.key);
+  switch(event.key){
+    case 'ArrowUp':
+    case 'w':
+      player1.movePlayer("UP", 5);
+      break
+    
+    case 'ArrowDown':
+    case 's':
+      player1.movePlayer("DOWN", 5)
+      break;
+    case 'ArrowLeft':
+    case 'a':
+      player1.movePlayer("LEFT", 5);
+      break;
+    case 'ArrowRight':
+    case 'd':
+      player1.movePlayer("RIGHT", 5);
+      break;
   }
-  frame++;
-  window.requestAnimationFrame(avatar);
+})
+
+
+
+let player1 = new Player("player1", 0, 50, 100, "yellow");
+
+function animate() {
+  clear(ctx);
+
+  player1.draw(ctx);
+  window.requestAnimationFrame(animate);
 }
 
 
 
-window.requestAnimationFrame(avatar);
+window.requestAnimationFrame(animate);
+
+
+//helper functions
+function clear(context){
+  const cnvs = document.getElementById('game-window');
+  context.fillStyle = "black";
+  context.fillRect(0, 0, cnvs.width, cnvs.height);
+}
