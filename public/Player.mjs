@@ -64,22 +64,22 @@ class Player {
   movePlayer(dir, speed, canvas) {
     
     if(dir === "UP") {
-      console.log("Move player up");
+      //console.log("Move player up");
       this.direction = "UP";
       this.y - speed > 0 ? this.y -= speed : this.y = canvas.height;  
     };
     if( dir === "DOWN" ) { 
-      console.log("Move player down");
+      //console.log("Move player down");
       this.direction = "DOWN";
       this.y + speed < canvas.height ? this.y += speed : this.y = 0;
     }
     if( dir === "LEFT" ) {
-      console.log("Move player left");
+      //console.log("Move player left");
       this.direction = "LEFT";
       this.x - speed > 0 ? this.x -= speed : this.x = canvas.width;
     }
     if( dir === "RIGHT") {
-      console.log("Move player right");
+      //console.log("Move player right");
       this.direction = "RIGHT";
       this.x + speed < canvas.width ? this.x += speed : this.x = 0;
     }
@@ -88,6 +88,13 @@ class Player {
   
   
   collision(item) {
+    console.log(`Checking ${item.id}`);
+    if(item.x < this.x && item.x + 20/*item width*/ > this.x){
+      if(item.y > this.y && item.y - 20 /*item height*/ < this.y) {
+        console.log(`HIT!!!! at (${this.x}, ${this.y})`);
+        item.renew();
+      }
+    }
     
   }
   

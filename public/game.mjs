@@ -35,6 +35,7 @@ function animate() {
   clear(ctx);
   collectible1.draw(ctx, canvas);
   player1.draw(ctx, canvas);
+  player1.collision(collectible1);
   window.requestAnimationFrame(animate);
 }
 
