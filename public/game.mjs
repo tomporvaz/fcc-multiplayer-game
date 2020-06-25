@@ -7,37 +7,30 @@ const canvas = document.getElementById('game-window');
 let ctx = canvas.getContext('2d');
 
 //keyboard event
-addEventListener('keydown', (event) =>{
+ document.onkeydown = (event) => {
   console.log(event.key);
-  switch(event.key){
-    case 'ArrowUp':
-    case 'w':
-      player1.movePlayer("UP", 5);
-      break
-    
-    case 'ArrowDown':
-    case 's':
-      player1.movePlayer("DOWN", 5)
-      break;
-    case 'ArrowLeft':
-    case 'a':
-      player1.movePlayer("LEFT", 5);
-      break;
-    case 'ArrowRight':
-    case 'd':
-      player1.movePlayer("RIGHT", 5);
-      break;
+ 
+    if(event.key === 'ArrowUp' || event.key === 'w') { player1.changeDirection("UP")};
+    if(event.key === 'ArrowDown' || event.key === 's') { player1.changeDirection("DOWN") };
+    if(event.key === 'ArrowLeft' || event.key === 'a') { player1.changeDirection("LEFT") };
+    if(event.key === 'ArrowRight' || event.key === 'd') { player1.changeDirection("RIGHT") };
+
+  };
+
+  /* document.onkeyup = (event) => {
+    if(event.key === 'ArrowUp' || event.key === 'w') { player1.changeDirection("")};
+    if(event.key === 'ArrowDown' || event.key === 's') { player1.changeDirection("") };
+    if(event.key === 'ArrowLeft' || event.key === 'a') { player1.changeDirection("") };
+    if(event.key === 'ArrowRight' || event.key === 'd') { player1.changeDirection("") };
   }
-})
-
-
+ */
 
 let player1 = new Player("player1", 0, 50, 100, "yellow");
 
 function animate() {
   clear(ctx);
 
-  player1.draw(ctx);
+  player1.draw(ctx, canvas);
   window.requestAnimationFrame(animate);
 }
 
