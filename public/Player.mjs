@@ -16,7 +16,6 @@ class Player {
     //initiate date and get Milliseconds to use a synchronizing constant
     const now = new Date();
     let ms = now.getMilliseconds();
-    console.log("frame");
     this.movePlayer(this.direction, this.speed, canvas);
     if(this.direction){
       this.faceDirection = this.direction;
@@ -63,7 +62,6 @@ class Player {
   
   //wirte if then statements
   movePlayer(dir, speed, canvas) {
-    console.log(this.x);
     
     if(dir === "UP") {
       console.log("Move player up");

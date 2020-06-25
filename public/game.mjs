@@ -15,6 +15,9 @@ let ctx = canvas.getContext('2d');
     if(event.key === 'ArrowLeft' || event.key === 'a') { player1.changeDirection("LEFT") };
     if(event.key === 'ArrowRight' || event.key === 'd') { player1.changeDirection("RIGHT") };
 
+    //for testing Collectible.renew()
+    if(event.key === "Enter") { collectible1.renew() };
+
   };
 
   /* document.onkeyup = (event) => {
@@ -30,7 +33,7 @@ let collectible1 = new Collectible("collectible1", 100, 400, 400);
 
 function animate() {
   clear(ctx);
-
+  collectible1.draw(ctx, canvas);
   player1.draw(ctx, canvas);
   window.requestAnimationFrame(animate);
 }
