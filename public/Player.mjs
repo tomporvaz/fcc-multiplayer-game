@@ -63,27 +63,27 @@ class Player {
   
   //wirte if then statements
   movePlayer(dir, speed, canvas) {
-    console.log(this.y);
+    console.log(this.x);
     
     if(dir === "UP") {
       console.log("Move player up");
       this.direction = "UP";
-      this.y - speed > 14 ? this.y -= speed : this.y = 14;  //ADD BOUNDARIES
+      this.y - speed > 0 ? this.y -= speed : this.y = canvas.height;  
     };
     if( dir === "DOWN" ) { 
       console.log("Move player down");
       this.direction = "DOWN";
-      this.y + speed < canvas.height - 14 ? this.y += speed : this.y = canvas.height - 14;
+      this.y + speed < canvas.height ? this.y += speed : this.y = 0;
     }
     if( dir === "LEFT" ) {
       console.log("Move player left");
       this.direction = "LEFT";
-      this.x - speed > 14 ? this.x -= speed : this.x = 14;
+      this.x - speed > 0 ? this.x -= speed : this.x = canvas.width;
     }
     if( dir === "RIGHT") {
       console.log("Move player right");
       this.direction = "RIGHT";
-      this.x + speed < canvas.width -14 ? this.x += speed : this.x = canvas.width - 14;
+      this.x + speed < canvas.width ? this.x += speed : this.x = 0;
     }
   }
   

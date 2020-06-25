@@ -26,6 +26,7 @@ let ctx = canvas.getContext('2d');
  */
 
 let player1 = new Player("player1", 0, 50, 100, "yellow");
+let collectible1 = new Collectible("collectible1", 100, 400, 400);
 
 function animate() {
   clear(ctx);
