@@ -34,13 +34,16 @@ let fruitPts = {
   key: 5000
 }
 
+const canvas = document.getElementById('game-window');
+
+
 class Collectible {
   constructor(id, score, x, y) {
     this.id = id;
     this.score = score;
-    this.x = x;
-    this.y = y;
-    this.fruitImg = cherryImg;
+    this.x = Math.floor(Math.random() * (canvas.width - 30));
+    this.y = Math.floor(Math.random() * (canvas.height - 30));
+    this.fruitImg = [cherryImg, strawberryImg, orangeImg, appleImg, melonImg, galaxianBossImg, bellImg, keyImg][Math.floor(Math.random() * 8)];//randomly choose a random fruit
 
   }
 
@@ -49,10 +52,9 @@ class Collectible {
   }
 
   renew() {
-    const canvas = document.getElementById('game-window');
     //randomly choose new fruit, x, and y coordinates
-    this.x = Math.floor(Math.random() * (canvas.width - 20));
-    this.y = Math.floor(Math.random() * (canvas.height - 20));
+    this.x = Math.floor(Math.random() * (canvas.width - 30));
+    this.y = Math.floor(Math.random() * (canvas.height - 30));
     this.fruitImg = [cherryImg, strawberryImg, orangeImg, appleImg, melonImg, galaxianBossImg, bellImg, keyImg][Math.floor(Math.random() * 8)];//randomly choose a random fruit
     
     console.log(`fruit location (${this.x}, ${this.y})`)

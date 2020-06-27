@@ -35,7 +35,9 @@ function animate() {
   clear(ctx);
   collectible1.draw(ctx, canvas);
   player1.draw(ctx, canvas);
+  //drawBox(ctx, player1.x - 10, player1.y - 10, 20);
   player1.collision(collectible1);
+  //drawBox(ctx, collectible1.x, collectible1.y, 30);
   window.requestAnimationFrame(animate);
 }
 
@@ -49,4 +51,14 @@ function clear(context){
   const cnvs = document.getElementById('game-window');
   context.fillStyle = "black";
   context.fillRect(0, 0, cnvs.width, cnvs.height);
+}
+
+//draws a red square with params.  used for debugging hit region.
+function drawBox(context, x, y, w ) {
+  context.strokeStyle = "red";
+  context.beginPath();
+  context.arc(x, y, 3, 0, Math.PI * 2);
+  context.stroke();
+  context.strokeRect(x, y, w, w);
+  context.stroke();
 }

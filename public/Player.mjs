@@ -89,10 +89,13 @@ class Player {
   
   collision(item) {
     console.log(`Checking ${item.id}`);
-    if(item.x < this.x && item.x + 20/*item width*/ > this.x){
-      if(item.y > this.y && item.y - 20 /*item height*/ < this.y) {
+    if( (item.x <= this.x + 10 || item.x <= this.x + 10 ) && (item.x + 30/*item width*/ >= this.x + 10 || item.x + 30/*item width*/ >= this.x - 10)){
+      if((item.y < this.y + 10 || item.y < this.y + 10) && (item.y + 30 /*item height*/ > this.y +10 || item.y + 30 /*item height*/ > this.y - 10)) {
         console.log(`HIT!!!! at (${this.x}, ${this.y})`);
         item.renew();
+        this.value++;
+        console.log(`${this.id}'s score: ${this.value}`)
+        return(true);
       }
     }
     
